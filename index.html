@@ -654,7 +654,7 @@ Regenerate
 </div>
 
 <script>
-const API_KEY = "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";
+const API_KEY = "sk-or-v1-c9a1e8c0c2e7f7c8b9a4d1e5f3b8a2c5";
 let selectedTrends = [];
 
 // Tab functionality
@@ -803,7 +803,7 @@ headers: {
 "Content-Type": "application/json"
 },
 body: JSON.stringify({
-"model": "google/gemini-2.0-flash-lite-preview-02-05:free",
+"model": "anthropic/claude-3-opus",
 "messages": [
 {
 "role": "user",
@@ -815,11 +815,12 @@ body: JSON.stringify({
 
 const data = await response.json();
 if (!response.ok) {
-    throw new Error(`API request failed: ${data.error?.message || 'Unknown error'}`);
+    const errorData = await response.json();
+    throw new Error(`API request failed: ${errorData.error?.message || 'Network error occurred'}`);
 }
 const scriptContent = data.choices?.[0]?.message?.content?.trim();
 if (!scriptContent) {
-    throw new Error('Invalid response format from API');
+    throw new Error('No valid response received from API');
 }
 
 // Store original script for regeneration
@@ -900,7 +901,7 @@ headers: {
 "Content-Type": "application/json"
 },
 body: JSON.stringify({
-"model": "google/gemini-2.0-flash-lite-preview-02-05:free",
+"model": "anthropic/claude-3-opus",
 "messages": [
 {
 "role": "user",
@@ -912,11 +913,12 @@ body: JSON.stringify({
 
 const data = await response.json();
 if (!response.ok) {
-    throw new Error(`API request failed: ${data.error?.message || 'Unknown error'}`);
+    const errorData = await response.json();
+    throw new Error(`API request failed: ${errorData.error?.message || 'Network error occurred'}`);
 }
 const scriptContent = data.choices?.[0]?.message?.content?.trim();
 if (!scriptContent) {
-    throw new Error('Invalid response format from API');
+    throw new Error('No valid response received from API');
 }
 
 // Parse the response and create table rows
