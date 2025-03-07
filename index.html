@@ -526,128 +526,37 @@ Generate Video Script
 
 <!-- Bantuan Tab Content -->
 <div id="content-bantuan" class="hidden">
-<div class="bg-white rounded-2xl shadow-md p-6 mb-6">
-<h2 class="text-xl font-bold mb-4">Panduan Membuat UGC yang Efektif</h2>
-
-<div class="mb-6">
-<h3 class="font-bold text-lg mb-3">Apa itu UGC?</h3>
-<p class="text-gray-600 mb-4">UGC (User Generated Content) adalah konten yang dibuat oleh pengguna atau creator yang terlihat seperti konten organik. Format ini sangat efektif untuk meningkatkan kepercayaan dan konversi karena terlihat lebih otentik dibanding iklan tradisional.</p>
-</div>
-
-<div class="mb-6">
-<h3 class="font-bold text-lg mb-3">Tips Membuat UGC yang Menarik</h3>
-<ul class="space-y-2 text-gray-600">
-<li class="flex items-start">
-<div class="w-6 h-6 rounded-full bg-[#FE2C55] flex items-center justify-center text-white mr-2 mt-0.5 flex-shrink-0">1</div>
-<span><strong>Hook yang kuat</strong> - Gunakan 3 detik pertama untuk menarik perhatian. Mulailah dengan klaim yang mengejutkan atau pertanyaan yang menarik.</span>
-</li>
-<li class="flex items-start">
-<div class="w-6 h-6 rounded-full bg-[#FE2C55] flex items-center justify-center text-white mr-2 mt-0.5 flex-shrink-0">2</div>
-<span><strong>Pain point yang jelas</strong> - Identifikasi masalah yang dihadapi target audience dengan jelas.</span>
-</li>
-<li class="flex items-start">
-<div class="w-6 h-6 rounded-full bg-[#FE2C55] flex items-center justify-center text-white mr-2 mt-0.5 flex-shrink-0">3</div>
-<span><strong>Tunjukkan solusi</strong> - Demonstrasikan bagaimana produk menyelesaikan masalah dengan visual yang menarik.</span>
-</li>
-<li class="flex items-start">
-<div class="w-6 h-6 rounded-full bg-[#FE2C55] flex items-center justify-center text-white mr-2 mt-0.5 flex-shrink-0">4</div>
-<span><strong>Tampilkan hasil</strong> - Berikan bukti nyata atau testimoni tentang efektivitas produk.</span>
-</li>
-<li class="flex items-start">
-<div class="w-6 h-6 rounded-full bg-[#FE2C55] flex items-center justify-center text-white mr-2 mt-0.5 flex-shrink-0">5</div>
-<span><strong>CTA yang jelas</strong> - Akhiri dengan call-to-action yang spesifik dan mendesak.</span>
-</li>
-</ul>
-</div>
-
-<div class="mb-6">
-<h3 class="font-bold text-lg mb-3">Elemen Script UGC yang Efektif</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="bg-gray-50 p-4 rounded-xl">
-<h4 class="font-bold text-[#FE2C55]">Hook/Opening</h4>
-<p class="text-gray-600">Menarik perhatian dalam 3 detik pertama dengan klaim yang mengejutkan atau pertanyaan yang menarik.</p>
-</div>
-<div class="bg-gray-50 p-4 rounded-xl">
-<h4 class="font-bold text-[#FE2C55]">Problem Statement</h4>
-<p class="text-gray-600">Identifikasi pain point yang dihadapi target audience dengan jelas dan relatable.</p>
-</div>
-<div class="bg-gray-50 p-4 rounded-xl">
-<h4 class="font-bold text-[#FE2C55]">Solution</h4>
-<p class="text-gray-600">Perkenalkan produk sebagai solusi untuk masalah yang telah disebutkan.</p>
-</div>
-<div class="bg-gray-50 p-4 rounded-xl">
-<h4 class="font-bold text-[#FE2C55]">Features/Benefits</h4>
-<p class="text-gray-600">Jelaskan fitur utama dan manfaat produk yang relevan dengan kebutuhan target audience.</p>
-</div>
-<div class="bg-gray-50 p-4 rounded-xl">
-<h4 class="font-bold text-[#FE2C55]">Social Proof</h4>
-<p class="text-gray-600">Berikan testimoni, rating, atau bukti lain yang menunjukkan kredibilitas produk.</p>
-</div>
-<div class="bg-gray-50 p-4 rounded-xl">
-<h4 class="font-bold text-[#FE2C55]">Call to Action</h4>
-<p class="text-gray-600">Instruksi yang jelas tentang tindakan yang harus diambil viewer (klik link, swipe up, dll).</p>
-</div>
+<div class="bg-white rounded-2xl shadow-md p-6">
+<h2 class="text-xl font-bold mb-4">Bantuan Penggunaan</h2>
+<div class="space-y-4">
+<div>
+<h3 class="font-bold mb-2">Cara Menggunakan Generator:</h3>
+<ol class="list-decimal pl-5 space-y-2">
+<li>Pilih durasi video yang diinginkan</li>
+<li>Masukkan informasi produk/jasa Anda</li>
+<li>Tentukan target market yang spesifik</li>
+<li>Pilih gaya bahasa yang sesuai</li>
+<li>Berikan deskripsi detail tentang produk</li>
+<li>Pilih elemen script yang dibutuhkan</li>
+<li>Klik tombol "Generate Video Script"</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 
 <!-- Loading State -->
-<div id="loadingState" class="hidden mt-8 text-center">
-<div class="inline-flex items-center justify-center p-8 bg-white rounded-xl shadow-md">
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="animate-spin text-[#FE2C55]">
-<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="30 30" fill="none" />
-</svg>
-<p class="ml-3 text-gray-700">Membuat script TikTok kamu...</p>
+<div id="loadingState" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+<div class="bg-white p-6 rounded-xl shadow-lg text-center">
+<div class="animate-spin rounded-full h-12 w-12 border-4 border-[#FE2C55] border-t-transparent mx-auto mb-4"></div>
+<p class="text-lg font-medium">Generating your script...</p>
 </div>
 </div>
 
-<!-- Result -->
-<div id="resultBox" class="hidden mt-8 mb-12">
-<div class="tiktok-card p-6">
-<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-<h3 class="text-xl font-bold mb-3 md:mb-0 text-gray-800">Video Script Timeline</h3>
-<div class="flex space-x-2">
-<button id="copyBtn" class="bg-gray-600 text-white px-4 py-2 rounded-xl hover:bg-gray-700 transition-colors flex items-center">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
-<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-</svg>
-Copy
-</button>
-<button id="downloadBtn" class="bg-[#25F4EE] text-white px-4 py-2 rounded-xl hover:bg-[#20ddd7] transition-colors flex items-center">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
-<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-<polyline points="7 10 12 15 17 10"></polyline>
-<line x1="12" y1="15" x2="12" y2="3"></line>
-</svg>
-CSV
-</button>
-<button id="regenerateBtn" class="bg-[#FE2C55] text-white px-4 py-2 rounded-xl hover:bg-[#ff4d70] transition-colors flex items-center">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
-<path d="M23 4v6h-6"></path>
-<path d="M1 20v-6h6"></path>
-<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"></path>
-<path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"></path>
-</svg>
-Regenerate
-</button>
-</div>
-</div>
-<div class="overflow-x-auto bg-gray-50 rounded-xl">
-<table class="timeline-table w-full">
-<thead class="bg-gray-100 border-b">
-<tr>
-<th class="py-3 px-4 w-24 text-gray-700">Timestamp</th>
-<th class="py-3 px-4 w-32 text-gray-700">Scene</th>
-<th class="py-3 px-4 text-gray-700">Script/Action</th>
-<th class="py-3 px-4 w-32 text-gray-700">Visual Elements</th>
-</tr>
-</thead>
-<tbody id="scriptTable" class="divide-y divide-gray-200">
-<!-- Script content will be inserted here -->
-</tbody>
-</table>
+<!-- Result Box -->
+<div id="resultBox" class="hidden mt-8 bg-white rounded-xl shadow-md p-6">
+<h3 class="text-xl font-bold mb-4">Generated Script:</h3>
+<div id="scriptContent" class="prose max-w-none"></div>
 </div>
 </div>
 </div>
@@ -1017,6 +926,30 @@ input.addEventListener('keydown', function(event) {
 if (event.key === 'Enter' && input.tagName !== 'TEXTAREA') {
 event.preventDefault();
 }
+});
+});
+
+// Add event listener for generate button and fixing API response handling
+document.getElementById('generateBtn').addEventListener('click', async () => {
+  try {
+    await generateScript();
+    const data = await tryNextApi(prompt);
+    
+    if (data.choices && data.choices[0].message.content) {
+      const scriptContent = data.choices[0].message.content;
+      document.getElementById('scriptContent').innerHTML = scriptContent;
+      document.getElementById('resultBox').classList.remove('hidden');
+    } else {
+      throw new Error('Invalid API response format');
+    }
+  } catch (error) {
+    alert('Maaf, terjadi kesalahan. Silakan coba lagi.');
+    console.error('Error:', error);
+  } finally {
+    document.getElementById('generateBtn').disabled = false;
+    document.getElementById('generateBtn').classList.add('pulse-animation');
+    document.getElementById('loadingState').classList.add('hidden');
+  }
 });
 });
 </script>
