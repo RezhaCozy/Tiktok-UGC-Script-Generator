@@ -812,7 +812,13 @@ body: JSON.stringify({
 });
 
 const data = await response.json();
-const scriptContent = data.choices[0].message.content.trim();
+if (!response.ok) {
+    throw new Error(`API request failed: ${data.error?.message || 'Unknown error'}`);
+}
+const scriptContent = data.choices?.[0]?.message?.content?.trim();
+if (!scriptContent) {
+    throw new Error('Invalid response format from API');
+}
 
 // Store original script for regeneration
 window.lastPrompt = prompt;
@@ -901,7 +907,13 @@ body: JSON.stringify({
 });
 
 const data = await response.json();
-const scriptContent = data.choices[0].message.content.trim();
+if (!response.ok) {
+    throw new Error(`API request failed: ${data.error?.message || 'Unknown error'}`);
+}
+const scriptContent = data.choices?.[0]?.message?.content?.trim();
+if (!scriptContent) {
+    throw new Error('Invalid response format from API');
+}
 
 // Parse the response and create table rows
 const rows = parseScriptContent(scriptContent);
