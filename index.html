@@ -794,23 +794,78 @@ Berikan script dalam format tabel dengan kolom:
 
 Format output harus dalam bentuk tabel yang rapi dengan pembagian waktu yang proporsional. Fokus pada storyline yang menarik dan engaging untuk format TikTok. Gunakan bahasa Indonesia yang natural dan sesuai dengan target audience.`;
 
-const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-method: "POST",
-headers: {
-"Authorization": `Bearer ${API_KEY}`,
-"HTTP-Referer": window.location.href,
-"X-Title": "TikTok UGC Generator",
-"Content-Type": "application/json"
-},
-body: JSON.stringify({
-"model": "anthropic/claude-3-opus",
-"messages": [
-{
-"role": "user",
-"content": prompt
+// API keys for different models
+const API_KEYS = {
+    gemini: "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",
+    deepseek: "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",
+    geminiPro: "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"
+};
+
+// Model configurations
+const MODELS = [
+    {
+        key: "gemini",
+        model: "google/gemini-2.0-flash-lite-preview-02-05:free"
+    },
+    {
+        key: "deepseek",
+        model: "deepseek/deepseek-r1-zero:free"
+    },
+    {
+        key: "meta",
+        model: "meta-llama/llama-3.3-70b-instruct:free"
+    },
+    {
+        key: "geminiPro",
+        model: "google/gemini-2.0-pro-exp-02-05:free"
+    }
+];
+
+async function tryModel(model, prompt) {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${API_KEYS[model.key] || API_KEYS.gemini}`,
+            "HTTP-Referer": window.location.href,
+            "X-Title": "TikTok UGC Generator",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "model": model.model,
+            "messages": [
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error(`API request failed for model ${model.model}`);
+    }
+
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content?.trim();
 }
-]
-})
+
+async function generateWithFallback(prompt) {
+    for (const model of MODELS) {
+        try {
+            const result = await tryModel(model, prompt);
+            if (result) {
+                console.log(`Successfully generated using ${model.model}`);
+                return result;
+            }
+        } catch (error) {
+            console.error(`Error with ${model.model}:`, error);
+            continue;
+        }
+    }
+    throw new Error('All models failed to generate content');
+}
+
+const scriptContent = await generateWithFallback(prompt)
 });
 
 const data = await response.json();
