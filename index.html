@@ -196,7 +196,7 @@
                     TikTok Trends
                 </h2>
                 
-                <div class="flex flex-wrap mb-2">
+                <div class="flex flex-wrap mb-2" id="trendTags">
                     <div class="trend-tag">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -654,7 +654,7 @@
     </div>
 
     <script>
-        const API_KEY = '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';
+        const API_KEY = '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';
         let selectedTrends = [];
         
         // Tab functionality
@@ -794,24 +794,30 @@ Berikan script dalam format tabel dengan kolom:
 
 Format output harus dalam bentuk tabel yang rapi dengan pembagian waktu yang proporsional. Fokus pada storyline yang menarik dan engaging untuk format TikTok. Gunakan bahasa Indonesia yang natural dan sesuai dengan target audience.`;
 
-                const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                const response = await fetch("https://api.openai.com/v1/chat/completions", {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${API_KEY}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
+                        "model": "gpt-3.5-turbo",
                         "messages": [
                             {
                                 "role": "user",
                                 "content": prompt
                             }
-                        ]
+                        ],
+                        "temperature": 0.7
                     })
                 });
 
                 const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error?.message || 'Error calling OpenAI API');
+                }
+                
                 const scriptContent = data.choices[0].message.content.trim();
                 
                 // Store original script for regeneration
@@ -883,24 +889,30 @@ Format output harus dalam bentuk tabel yang rapi dengan pembagian waktu yang pro
             document.getElementById('loadingState').classList.remove('hidden');
 
             try {
-                const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                const response = await fetch("https://api.openai.com/v1/chat/completions", {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${API_KEY}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
+                        "model": "gpt-3.5-turbo",
                         "messages": [
                             {
                                 "role": "user",
                                 "content": window.lastPrompt + "\n\nBerikan variasi script baru yang berbeda dari sebelumnya."
                             }
-                        ]
+                        ],
+                        "temperature": 0.9
                     })
                 });
 
                 const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error?.message || 'Error calling OpenAI API');
+                }
+                
                 const scriptContent = data.choices[0].message.content.trim();
                 
                 // Parse the response and create table rows
